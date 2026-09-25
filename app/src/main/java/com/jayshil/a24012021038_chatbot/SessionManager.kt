@@ -19,6 +19,21 @@ class SessionManager(context: Context) {
         return preferences.getString("access_token", null)
     }
 
+    fun saveUser(name: String, email: String) {
+        preferences.edit()
+            .putString("username", name)
+            .putString("user_email", email)
+            .apply()
+    }
+
+    fun getUserName(): String? {
+        return preferences.getString("username", null)
+    }
+
+    fun getUserEmail(): String? {
+        return preferences.getString("user_email", null)
+    }
+
     fun isLoggedIn(): Boolean {
         return getToken() != null
     }

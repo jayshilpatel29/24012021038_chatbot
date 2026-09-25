@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
+        android:name=".NexusApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,29 +16,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme._24012021038_chatbot"
         android:usesCleartextTraffic="true">
-
         <activity
             android:name=".MainLogin"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

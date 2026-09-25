@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settingsRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:fillViewport="true">
+    tools:context=".SettingsActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+    <ScrollView
+        android:id="@+id/scrollViewSettings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- ================================= -->
-        <!-- HEADER -->
-        <!-- ================================= -->
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settingsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:padding="24dp">
+
+            <!-- ================================= -->
+            <!-- HEADER -->
+            <!-- ================================= -->
 
             <TextView
                 android:id="@+id/btnBack"
@@ -31,56 +37,54 @@
                 android:gravity="center"
                 android:text="←"
                 android:textColor="#111111"
-                android:textSize="32sp" />
+                android:textSize="32sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/tvSettingsTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:text="Settings"
                 android:textColor="#111111"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@id/btnBack"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-            <Space
-                android:layout_width="48dp"
-                android:layout_height="1dp" />
-
-        </LinearLayout>
-
-
-        <!-- ================================= -->
-        <!-- PROFILE -->
-        <!-- ================================= -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <!-- Profile Circle -->
+            <!-- ================================= -->
+            <!-- PROFILE -->
+            <!-- ================================= -->
 
             <TextView
+                android:id="@+id/tvProfileInitials"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/profile_circle"
                 android:gravity="center"
                 android:text="JP"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btnBack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
+                android:id="@+id/tvProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:text="JAYSHIL PATEL"
                 android:textColor="#111111"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tvProfileInitials"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tvEmail"
@@ -89,7 +93,10 @@
                 android:layout_marginTop="5dp"
                 android:text="admin@gmail.com"
                 android:textColor="#777777"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tvProfileName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditProfile"
@@ -98,581 +105,747 @@
                 android:layout_marginTop="12dp"
                 android:text="Edit Profile"
                 android:textAllCaps="false"
-                app:cornerRadius="20dp" />
+                app:cornerRadius="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tvEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        </LinearLayout>
+            <!-- ================================= -->
+            <!-- APPEARANCE -->
+            <!-- ================================= -->
 
-
-        <!-- ================================= -->
-        <!-- APPEARANCE -->
-        <!-- ================================= -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:text="Appearance"
-            android:textColor="#888888"
-            android:textSize="18sp" />
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvHeaderAppearance"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="35dp"
+                android:text="Appearance"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/btnEditProfile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <!-- Theme -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAppearance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderAppearance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:gravity="center_vertical"
                     android:paddingStart="18dp"
                     android:paddingEnd="14dp">
 
                     <TextView
+                        android:id="@+id/tvThemeLabel"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="Theme"
                         android:textColor="#222222"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvThemeStatus" />
 
                     <TextView
+                        android:id="@+id/tvThemeStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:text="Light"
                         android:textColor="#777777"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/switchTheme" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchTheme"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        </com.google.android.material.card.MaterialCardView>
+            <!-- ================================= -->
+            <!-- CHAT -->
+            <!-- ================================= -->
 
-
-        <!-- ================================= -->
-        <!-- CHAT -->
-        <!-- ================================= -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Chat"
-            android:textColor="#888888"
-            android:textSize="18sp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvHeaderChat"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="28dp"
+                android:text="Chat"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/cardAppearance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <!-- Send Enter -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="14dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Send with Enter"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchEnter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-
-                <!-- Timestamps -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="14dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Show timestamps"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchTimestamps"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-
-                <!-- Clear Current Chat -->
-
-                <LinearLayout
-                    android:id="@+id/btnClearCurrentChat"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Clear current chat"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="›"
-                        android:textColor="#888888"
-                        android:textSize="28sp" />
-
-                </LinearLayout>
-
-
-                <!-- Clear History -->
-
-                <LinearLayout
-                    android:id="@+id/btnClearHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Clear all chat history"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="›"
-                        android:textColor="#888888"
-                        android:textSize="28sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <!-- ================================= -->
-        <!-- NOTIFICATIONS -->
-        <!-- ================================= -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Notifications"
-            android:textColor="#888888"
-            android:textSize="18sp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardChatSettings"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderChat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="14dp">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Notifications"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
+                    <!-- Send Enter -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rowSendEnter"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="14dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchNotifications"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Send with Enter"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/switchEnter" />
 
-                </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchEnter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="14dp">
+                    <!-- Timestamps -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rowTimestamps"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="14dp"
+                        app:layout_constraintTop_toBottomOf="@id/rowSendEnter">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Response completed"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Show timestamps"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/switchTimestamps" />
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchResponse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchTimestamps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
-                </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
+                    <!-- Clear Current Chat -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btnClearCurrentChat"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/rowTimestamps">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Clear current chat"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvArrow1" />
 
+                        <TextView
+                            android:id="@+id/tvArrow1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#888888"
+                            android:textSize="28sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- ================================= -->
-        <!-- AI / NEXUS -->
-        <!-- ================================= -->
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="AI / Nexus"
-            android:textColor="#888888"
-            android:textSize="18sp" />
+                    <!-- Clear History -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btnClearHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/btnClearCurrentChat">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Clear all chat history"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvArrow2" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tvArrow2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#888888"
+                            android:textSize="28sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================================= -->
+            <!-- NOTIFICATIONS -->
+            <!-- ================================= -->
+
+            <TextView
+                android:id="@+id/tvHeaderNotifications"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="28dp"
+                android:text="Notifications"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/cardChatSettings"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Default model          Nexus"
-                    android:textColor="#222222"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Response style        Balanced"
-                    android:textColor="#222222"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="14dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Save chat history"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchSaveChat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <!-- ================================= -->
-        <!-- PRIVACY -->
-        <!-- ================================= -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Privacy"
-            android:textColor="#888888"
-            android:textSize="18sp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNotifications"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderNotifications"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
-                    android:id="@+id/btnDataPrivacy"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Data &amp; Privacy"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rowNotifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="14dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="›"
-                        android:textColor="#888888"
-                        android:textSize="28sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Notifications"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/switchNotifications" />
 
-                </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchNotifications"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/btnClearLocalData"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rowResponse"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="14dp"
+                        app:layout_constraintTop_toBottomOf="@id/rowNotifications">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Clear local data"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Response completed"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/switchResponse" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="›"
-                        android:textColor="#888888"
-                        android:textSize="28sp" />
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchResponse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
-                </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
+            <!-- ================================= -->
+            <!-- AI / NEXUS -->
+            <!-- ================================= -->
 
-        <!-- ================================= -->
-        <!-- ACCOUNT -->
-        <!-- ================================= -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Account"
-            android:textColor="#888888"
-            android:textSize="18sp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvHeaderAI"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="28dp"
+                android:text="AI / Nexus"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/cardNotifications"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                <LinearLayout
-                    android:id="@+id/btnChangePassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Change Password"
-                        android:textColor="#222222"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="›"
-                        android:textColor="#888888"
-                        android:textSize="28sp" />
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/btnLogout"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Logout"
-                    android:textColor="#D32F2F"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/btnDeleteAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Delete Account"
-                    android:textColor="#D32F2F"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <!-- ================================= -->
-        <!-- ABOUT -->
-        <!-- ================================= -->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="About"
-            android:textColor="#888888"
-            android:textSize="18sp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAI"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderAI"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <TextView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Nexus Version 1.0.0"
-                    android:textColor="#777777"
-                    android:textSize="15sp" />
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/btnAbout"
+                    <TextView
+                        android:id="@+id/tvDefaultModel"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:text="Default model          Nexus"
+                        android:textColor="#222222"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvResponseStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:text="Response style        Balanced"
+                        android:textColor="#222222"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@id/tvDefaultModel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rowSaveChat"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="14dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvResponseStyle">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Save chat history"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/switchSaveChat" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchSaveChat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================================= -->
+            <!-- PRIVACY -->
+            <!-- ================================= -->
+
+            <TextView
+                android:id="@+id/tvHeaderPrivacy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Privacy"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/cardAI"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPrivacy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderPrivacy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="About Nexus                                      ›"
-                    android:textColor="#222222"
-                    android:textSize="16sp" />
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/btnTerms"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btnDataPrivacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Data &amp; Privacy"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvArrow3" />
+
+                        <TextView
+                            android:id="@+id/tvArrow3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#888888"
+                            android:textSize="28sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btnClearLocalData"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/btnDataPrivacy">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Clear local data"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvArrow4" />
+
+                        <TextView
+                            android:id="@+id/tvArrow4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#888888"
+                            android:textSize="28sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================================= -->
+            <!-- ACCOUNT -->
+            <!-- ================================= -->
+
+            <TextView
+                android:id="@+id/tvHeaderAccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Account"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/cardPrivacy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderAccount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Terms                                               ›"
-                    android:textColor="#222222"
-                    android:textSize="16sp" />
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/btnPrivacyPolicy"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btnChangePassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Change Password"
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvArrow5" />
+
+                        <TextView
+                            android:id="@+id/tvArrow5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textColor="#888888"
+                            android:textSize="28sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/btnLogout"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:text="Logout"
+                        android:textColor="#D32F2F"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/btnChangePassword"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btnDeleteAccount"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:text="Delete Account"
+                        android:textColor="#D32F2F"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/btnLogout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================================= -->
+            <!-- ABOUT -->
+            <!-- ================================= -->
+
+            <TextView
+                android:id="@+id/tvHeaderAbout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="About"
+                android:textColor="#888888"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/cardAccount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAbout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeaderAbout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="18dp"
-                    android:text="Privacy Policy                                    ›"
-                    android:textColor="#222222"
-                    android:textSize="16sp" />
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvVersion"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:text="Nexus Version 1.0.0"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/btnAbout"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:text="About Nexus"
+                        android:textColor="#222222"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/tvVersion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/btnTerms"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:text="Terms"
+                        android:textColor="#222222"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/btnAbout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-</ScrollView>
+                    <TextView
+                        android:id="@+id/btnPrivacyPolicy"
+                        android:layout_width="0dp"
+                        android:layout_height="58dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:text="Privacy Policy"
+                        android:textColor="#222222"
+                        android:textSize="16sp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintTop_toBottomOf="@id/btnTerms"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
